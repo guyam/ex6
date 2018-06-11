@@ -1,14 +1,28 @@
 package oop.ex6.main;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+//import java.io.BufferedReader;
+//import java.io.File;
+//import java.io.FileReader;
 import java.io.*;
 import java.util.regex.*;
+import java.util.*;
+
+
+
+
 
 public class Sjavac {
 
+
+   public Set<Integer> visitedLineSet;
+
+    Sjavac(){
+        this.visitedLineSet  = new HashSet<>();
+    }
+
+
     public static void main(String[] args) throws IOException {
+        Sjavac validator = new Sjavac();
         String filePath = args[0];
         // .mathces();
         //
@@ -20,13 +34,18 @@ public class Sjavac {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             StringBuffer stringBuffer = new StringBuffer();
             String line;
+            int lineCounter = 0;
             while ((line = bufferedReader.readLine()) != null) {
-                Pattern whiteSpacePattern = Pattern.compile("\\s*");
+                lineCounter++;
                 Pattern commentLinePattern = Pattern.compile("//");
-                Matcher lineSpace = whiteSpacePattern.matcher((line));
+                System.out.println(lineCounter);
+                //Pattern whiteSpacePattern = Pattern.compile("\\s*");
+                //Matcher lineSpace = whiteSpacePattern.matcher((line));
                 Matcher commentLine = commentLinePattern.matcher((line));
                 if (line.matches("\\s*")||commentLine.lookingAt()) {
                     System.out.println("STRING");
+                    validator.visitedLineSet.add(lineCounter);
+                    continue;
                 }
                 else{ // NO MACH
                     System.out.println(line);
@@ -49,6 +68,7 @@ public class Sjavac {
 
         }
 
+        System.out.println(validator.visitedLineSet);
 
     }
 
