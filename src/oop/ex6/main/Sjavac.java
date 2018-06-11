@@ -22,10 +22,10 @@ public class Sjavac {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 Pattern whiteSpacePattern = Pattern.compile("\\s*");
-                Pattern commentLinePattern = Pattern.compile("\\\\");
+                Pattern commentLinePattern = Pattern.compile("//");
                 Matcher lineSpace = whiteSpacePattern.matcher((line));
                 Matcher commentLine = commentLinePattern.matcher((line));
-                if (line.equals("")||commentLine.lookingAt()) {
+                if (line.matches("\\s*")||commentLine.lookingAt()) {
                     System.out.println("STRING");
                 }
                 else{ // NO MACH
@@ -44,7 +44,7 @@ public class Sjavac {
             e.printStackTrace();
             return;
 
-
+    //test guy
 
 
         }
