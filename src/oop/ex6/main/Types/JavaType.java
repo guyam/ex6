@@ -16,6 +16,8 @@ public class JavaType {
     private String type;
     // the value's data
     private String data;
+    //the scope from which the type came from (1 is global)
+    private int scope;
     //true if the variable was initialized with an initial value, and false otherwise.
     private boolean wasInitialized;
     // true if the variable was initialized with a "final" declaration or not
@@ -41,10 +43,12 @@ public class JavaType {
     /**
      * the default constructor. Used in case of simple declaration (int a;)
      *
-     * @param typeName the type which was declared
+     * @param typeName  the type which was declared
+     * @param whatScope the scope from which it came
      */
-    public JavaType(String typeName) {
+    public JavaType(String typeName, int whatScope) {
         type = typeName;
+        scope = whatScope;
         wasInitialized = false;
         isFinal = false;
         data = null;
@@ -55,15 +59,17 @@ public class JavaType {
      * 1. a value was declared with the "final" keyword. in this case it MUST be initialized (the function checks for it).
      * 2. a value was declared and initialized (int a=5);
      *
+     * @param whatScope     the scope from which it came
      * @param typeName      the type of variable
      * @param initialValue  the initial value, could be null
      * @param initWithFinal true if the variable was declared with the "final" prefix, false otherwise.
      */
-    public JavaType(String typeName, String initialValue, boolean initWithFinal) throws EmptyFinalDeclarationException, ClassCastException {
+    public JavaType(String typeName, String initialValue, boolean initWithFinal, int whatScope) throws EmptyFinalDeclarationException, ClassCastException {
         //first, we'll check if the value was declared with "final" and not initialized
         if (initialValue == null && initWithFinal) {
             throw new EmptyFinalDeclarationException();
         }
+        scope = whatScope;
         type = typeName;
         isFinal = initWithFinal;
         //tries to assign the initial value to the variable. might throw classcast exception
@@ -75,15 +81,17 @@ public class JavaType {
      * 1. a value was declared with the "final" keyword. in this case it MUST be initialized (the function checks for it).
      * 2. a value was declared and initialized (int a=b);
      *
+     * @param whatScope     the scope from which it came
      * @param typeName      the type of variable
      * @param other         the other variable, from which we will assign the value
      * @param initWithFinal true if the variable was declared with the "final" prefix, false otherwise.
      */
-    public JavaType(String typeName, JavaType other, boolean initWithFinal) throws EmptyFinalDeclarationException, ClassCastException {
+    public JavaType(String typeName, JavaType other, boolean initWithFinal, int whatScope) throws EmptyFinalDeclarationException, ClassCastException {
         //first, we'll check if the value was declared with "final" and the other variable is not initialized
         if (!other.isInitialized() && initWithFinal) {
             throw new EmptyFinalDeclarationException();
         }
+        scope = whatScope;
         type = typeName;
         isFinal = initWithFinal;
         //tries to assign the initial value from the other parameter to the variable. might throw classcast exception
@@ -133,7 +141,7 @@ public class JavaType {
             throw new ClassCastException();
         }
         data = val;
-        if(type.equals("boolean"))
+        if (type.equals("boolean"))
             correctBoolData();
         wasInitialized = true;
     }
@@ -214,6 +222,10 @@ public class JavaType {
     }
 
 
+    public int getScope() {
+        return scope;
+    }
+
     public String getData() {
         return data;
     }
@@ -225,7 +237,7 @@ public class JavaType {
     @Override
     public String toString() {
         return "This is a variable of type: " + type + " and it currently has the value: " + data + ".\n" +
-                "This is a final variable -> " + isFinal;
+                "This is a final variable -> " + isFinal + " and it came from scope: " + scope;
     }
 
     private void correctBoolData() {

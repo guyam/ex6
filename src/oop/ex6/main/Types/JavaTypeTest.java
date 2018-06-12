@@ -13,28 +13,28 @@ public class JavaTypeTest {
         //initialization
         ArrayList<JavaType> testList = new ArrayList<>();
         // empty int
-        JavaType emptyint1 = new JavaType("int");
+        JavaType emptyint1 = new JavaType("int", 0);
         testList.add(emptyint1);
         // empty char
-        JavaType emptychar1 = new JavaType("char");
+        JavaType emptychar1 = new JavaType("char", 0);
         testList.add(emptychar1);
         // final int=5;
-        JavaType finalint5 = new JavaType("int", "5", true);
+        JavaType finalint5 = new JavaType("int", "5", true, 0);
         testList.add(finalint5);
         //double =7.2;
-        JavaType double72 = new JavaType("double", "7.2", false);
+        JavaType double72 = new JavaType("double", "7.2", false, 0);
         testList.add(double72);
         //String = ""
-        JavaType emptyString = new JavaType("String", "\"\"", false);
+        JavaType emptyString = new JavaType("String", "\"\"", false, 0);
         testList.add(emptyString);
         //empty char
-        JavaType emptyChar = new JavaType("char", "''", false);
+        JavaType emptyChar = new JavaType("char", "''", false, 0);
         testList.add(emptyChar);
         // boolean flase
-        JavaType boolFalse = new JavaType("boolean", "false", false);
+        JavaType boolFalse = new JavaType("boolean", "false", false, 0);
         testList.add(boolFalse);
         //double =7.2;
-        JavaType stringBlahbah = new JavaType("String", "\"blahblah\"", false);
+        JavaType stringBlahbah = new JavaType("String", "\"blahblah\"", false, 0);
         testList.add(stringBlahbah);
 
         for (JavaType var : testList)

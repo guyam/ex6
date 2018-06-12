@@ -8,7 +8,6 @@ public class FunctionTypeTester {
         ArrayList<String> params2 = new ArrayList<>();
         ArrayList<String> params3 = new ArrayList<>();
         ArrayList<String> params4 = new ArrayList<>();
-        ArrayList<String> params5 = new ArrayList<>();
         params1.add("int");
         params1.add("double");
         params1.add("double");
@@ -21,8 +20,10 @@ public class FunctionTypeTester {
         FunctionType test2 = new FunctionType(params2);
         FunctionType test3 = new FunctionType(params3);
         FunctionType test4 = new FunctionType(params4);
-        FunctionType test5 = new FunctionType(params5);
-
+        assert (test1.sameSignature(test2));
+        assert (!test1.sameSignature(test3));
+        assert (test3.sameSignature(test3));
+        assert (!test2.sameSignature(test4));
     }
 }
 

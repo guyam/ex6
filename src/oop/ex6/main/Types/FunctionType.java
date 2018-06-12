@@ -25,7 +25,7 @@ public class FunctionType {
         //now we know that they are of the same size, we'll go over them both to see if the signature of the types the
         //function receives is the same.
         for (int i = 0; i < params.size(); i++) {
-            if (!params.get(i).equals(other.getParams().get(i)))
+            if (JavaType.contains(JavaType.compatibleTypes.get(params.get(i)),other.getParams().get(i)))
                 return false;
         }
         return true;
