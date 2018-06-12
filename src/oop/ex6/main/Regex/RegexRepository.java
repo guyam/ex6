@@ -47,7 +47,7 @@ public class RegexRepository {
                 if (generalStructureMatcher.group(1)!=null){ // if the is 'final' but not =
                     return false;
                 }
-                JavaType globalLine = new JavaType(generalStructureMatcher.group(2));
+               // JavaType globalLine = new JavaType(generalStructureMatcher.group(2));
                 System.out.println(nameMatcher.group(1)); // todo NOAM  del - name only
                 System.out.println("BOOM");  // todo del
                 return true;
@@ -113,7 +113,7 @@ public class RegexRepository {
 
     public static void main(String[] args) {
         //String s1 = "int a1 = 7, a2, a3 = 6;";
-        String s2 = "  final    int        a=45     ,    a_, y =8__,      a1a1=_1_1;";
+        String s2 = "  final    int        a=45     ,    a_=, y =8__,      a1a1=_1_1;";
         //String s3 = "sdfs= =sdffd";
         // System.out.println(s3.split("=").length);
         RegexRepository r2 = new RegexRepository(s2);
