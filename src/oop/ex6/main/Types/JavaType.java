@@ -133,6 +133,8 @@ public class JavaType {
             throw new ClassCastException();
         }
         data = val;
+        if(type.equals("boolean"))
+            correctBoolData();
         wasInitialized = true;
     }
 
@@ -145,7 +147,7 @@ public class JavaType {
     private boolean areComparable(String newVal) {
         if (returnType(newVal) == null)
             return false;
-        return contains(compatibleTypes.get(type), newVal);
+        return contains(compatibleTypes.get(type), returnType(newVal));
     }
 
     /**
@@ -165,7 +167,7 @@ public class JavaType {
             if (isChar(val))
                 return "char";
             if (isString(val))
-                return "string";
+                return "String";
         }
         return null;
     }
@@ -218,5 +220,20 @@ public class JavaType {
 
     public boolean isInitialized() {
         return wasInitialized;
+    }
+
+    @Override
+    public String toString() {
+        return "This is a variable of type: " + type + " and it currently has the value: " + data + ".\n" +
+                "This is a final variable -> " + isFinal;
+    }
+
+    private void correctBoolData() {
+        if (data.equals("true") || data.equals("false"))
+            return;
+        Double temp = Double.parseDouble(data);
+        if (temp == 0)
+            data = "true";
+        data = "false";
     }
 }
