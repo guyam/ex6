@@ -21,14 +21,14 @@ public class JavaType {
     // true if the variable was initialized with a "final" declaration or not
     private boolean isFinal;
     // a dictionary holding the types that one can assign to each type
-    private static TreeMap<String, String[]> compatibleTypes = initializeTypes();
+    public static TreeMap<String, String[]> compatibleTypes = initializeTypes();
 
     /**
      * initializes the type compatibility dictionary
      *
      * @return a tree map containing the type compatibilities
      */
-    private static TreeMap<String, String[]> initializeTypes() {
+    public static TreeMap<String, String[]> initializeTypes() {
         TreeMap<String, String[]> temp = new TreeMap<>();
         temp.put("int", new String[]{"int"});
         temp.put("double", new String[]{"int", "double"});
@@ -205,7 +205,7 @@ public class JavaType {
         return val.matches(regex);
     }
 
-    private static boolean contains(String[] array, String val) {
+    public static boolean contains(String[] array, String val) {
         for (String word : array) {
             if (word.equals(val))
                 return true;
