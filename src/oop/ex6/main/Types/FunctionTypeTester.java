@@ -22,7 +22,10 @@ public class FunctionTypeTester {
         FunctionType test3 = new FunctionType(params3);
         FunctionType test4 = new FunctionType(params4);
         FunctionType test5 = new FunctionType(params5);
-
+        assert (test1.sameSignature(test2));
+        assert (!test1.sameSignature(test3));
+        assert (test3.sameSignature(test3));
+        assert (!test2.sameSignature(test4));
     }
 }
 
