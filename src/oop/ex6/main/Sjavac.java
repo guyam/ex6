@@ -3,6 +3,10 @@ package oop.ex6.main;
 //import java.io.BufferedReader;
 //import java.io.File;
 //import java.io.FileReader;
+import oop.ex6.main.Regex.RegexRepository;
+import oop.ex6.main.Types.FunctionType;
+import oop.ex6.main.Types.JavaType;
+
 import java.io.*;
 import java.util.regex.*;
 import java.util.*;
@@ -15,18 +19,23 @@ public class Sjavac {
 
 
    public Set<Integer> visitedLineSet;
+   public TreeMap<String, JavaType> variableDict;
+   public TreeMap<String, FunctionType> methodDict;
+
 
     Sjavac(){
         this.visitedLineSet  = new HashSet<>();
+        this.variableDict = new TreeMap<>();
+        this.methodDict = new TreeMap<>();
     }
 
 
-    public static void main(String[] args) throws IOException {
-        Sjavac validator = new Sjavac();
-        String filePath = args[0];
-        // .mathces();
-        //
-        //String filePath = "testFile";
+
+
+
+
+    private void firstRunner(String filePath, int scope) throws IOException {
+
         File file = new File(filePath);
         FileReader fileReader = null;
         try {
@@ -35,20 +44,20 @@ public class Sjavac {
             StringBuffer stringBuffer = new StringBuffer();
             String line;
             int lineCounter = 0;
+            RegexRepository variableHandler = new RegexRepository("", this.variableDict, scope);
             while ((line = bufferedReader.readLine()) != null) {
                 lineCounter++;
                 Pattern commentLinePattern = Pattern.compile("//");
-                System.out.println(lineCounter);
-                //Pattern whiteSpacePattern = Pattern.compile("\\s*");
-                //Matcher lineSpace = whiteSpacePattern.matcher((line));
+                //System.out.println(lineCounter); //TODO DEL
                 Matcher commentLine = commentLinePattern.matcher((line));
                 if (line.matches("\\s*")||commentLine.lookingAt()) {
-                    System.out.println("STRING");
-                    validator.visitedLineSet.add(lineCounter);
+                    //System.out.println("STRING");  //TODO DEL
+                    this.visitedLineSet.add(lineCounter);
                     continue;
                 }
-                else{ // NO MACH
-                    System.out.println(line);
+                else{
+                    variableHandler.setString(line);
+                    variableHandler.checkSyntaxValidity();
                 }
 
 
@@ -68,8 +77,23 @@ public class Sjavac {
 
         }
 
-        System.out.println(validator.visitedLineSet);
+        //System.out.println(this.visitedLineSet);
 
     }
+
+    public static void main(String[] args) throws IOException{
+        // TODO  - CHEK PARAMETERS???
+        String pathName = args[0];
+        Sjavac validator = new Sjavac();
+        validator.firstRunner(pathName, 0);
+        System.out.println(validator.variableDict.size()); // should be 1
+        for (String treeKey : validator.variableDict.keySet()){
+            System.out.println(validator.variableDict.get(treeKey));
+            System.out.println(treeKey);
+        }
+
+
+    }
+
 
 }

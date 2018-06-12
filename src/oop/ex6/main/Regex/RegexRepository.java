@@ -1,12 +1,15 @@
 package oop.ex6.main.Regex;
 import oop.ex6.main.Types.JavaType;
 
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegexRepository {
 
     String inputString;
+    TreeMap<String, JavaType> variableSet;
+    int scope;
 
     String[] classNames = {"String", "double", "int", "boolean", "char"};
     public static final Pattern finalTypeRegex = Pattern.compile("^final\\s.*;$");
@@ -21,12 +24,17 @@ public class RegexRepository {
 
 
 
-
-    //String static final
-
-    RegexRepository(String input) {
+    public RegexRepository(String input, TreeMap<String, JavaType> varSetInput, int scopeInput) {
         this.inputString = input;
         this.generalStructureMatcher = this.generalStructureRegex.matcher(inputString);
+        this.variableSet = varSetInput;
+        this.scope = scopeInput;
+    }
+
+
+    public void setString (String newString){
+        this.inputString = newString;
+        this.generalStructureMatcher = this.generalStructureRegex.matcher(newString);
     }
 
 
@@ -40,15 +48,21 @@ public class RegexRepository {
 
 
     boolean checkSingleBlock() {
-        Matcher nameMatcher = nameRegex.matcher(generalStructureMatcher.group(3));
-        Matcher nameMatcherWithValue = nameRegexWithValue.matcher(generalStructureMatcher.group(3));
+        String lineName = generalStructureMatcher.group(3);
+        Matcher nameMatcher = nameRegex.matcher(lineName);
+        Matcher nameMatcherWithValue = nameRegexWithValue.matcher(lineName);
+
         if (!inputString.contains("=")) { // if has no =
             if (nameMatcher.matches()){
                 if (generalStructureMatcher.group(1)!=null){ // if the is 'final' but not =
                     return false;
                 }
-               // JavaType globalLine = new JavaType(generalStructureMatcher.group(2));
-                System.out.println(nameMatcher.group(1)); // todo NOAM  del - name only
+                if ((variableSet.containsKey(lineName.trim()))&&(variableSet.get(lineName.trim()).getScope
+                        ()==scope)){
+                    // TODO THROW EXCEPTION
+                    System.out.println("EXCEPTION"); // todo del;
+                }
+                variableSet.put(lineName.trim(), new JavaType(generalStructureMatcher.group(2), scope));
                 System.out.println("BOOM");  // todo del
                 return true;
             }
@@ -95,7 +109,7 @@ public class RegexRepository {
     }
 
 
-    boolean checkSyntaxValidity () {
+    public boolean checkSyntaxValidity () {
         if (!checkGeneralValidity()) {
             return false;
         }
@@ -110,28 +124,28 @@ public class RegexRepository {
 //
 //
 
-
-    public static void main(String[] args) {
-        //String s1 = "int a1 = 7, a2, a3 = 6;";
-        String s2 = "  final    int        a=45     ,    a_=, y =8__,      a1a1=_1_1;";
-        //String s3 = "sdfs= =sdffd";
-        // System.out.println(s3.split("=").length);
-        RegexRepository r2 = new RegexRepository(s2);
-        //r1.checkValidity();
-        //System.out.println(r2.checkGeneralValidity());
-        //System.out.println(r2.checkSyntaxValidity());
-        //int i = 0;
-//        while (r2.generalStructureMatcher.find()) {
-//            System.out.println(r2.generalStructureMatcher.group(i));
-//            i++;
-//        }
-        System.out.println(r2.checkSyntaxValidity());
+//
+//    public static void main(String[] args) {
+////        //String s1 = "int a1 = 7, a2, a3 = 6;";
+//        String s2 = "  final    int        a=45    ;";
+////        //String s3 = "sdfs= =sdffd";
+////        // System.out.println(s3.split("=").length);
+//        RegexRepository r2 = new RegexRepository(s2, null);
+////        //r1.checkValidity();
+////        //System.out.println(r2.checkGeneralValidity());
+////        //System.out.println(r2.checkSyntaxValidity());
+////        //int i = 0;
+//////        while (r2.generalStructureMatcher.find()) {
+//////            System.out.println(r2.generalStructureMatcher.group(i));
+//////            i++;
+//////        }
+//        System.out.println(r2.checkSyntaxValidity());
 //        System.out.println(r2.generalStructureMatcher.group(1));
 //        System.out.println(r2.generalStructureMatcher.group(2));
 //        System.out.println(r2.generalStructureMatcher.group(3));
-        //System.out.println(r2.checkGeneralValidity());
-        //System.out.println(r2.checkMultiBlocks());
-    }
+//        //System.out.println(r2.checkGeneralValidity());
+//        //System.out.println(r2.checkMultiBlocks());
+//    }
 
 
 }
