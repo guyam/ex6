@@ -9,7 +9,7 @@ public class RegexRepository {
     String[] classNames = {"String", "double", "int", "boolean", "char"};
     public static final Pattern finalTypeRegex = Pattern.compile("^final\\s.*;$");
     public static final Pattern assignmentTypeRegex = Pattern.compile("");
-    public static final  Pattern generalStructureRegex = Pattern.compile("(int|boolean|double|char|String)" +
+    public static final  Pattern generalStructureRegex = Pattern.compile(" *(final)? *(int|boolean|double|char|String)" +
             "((.)+);$");
     public static Matcher generalStructureMatcher;
     public static final Pattern nameRegex = Pattern.compile(" *(([A-Za-z]+\\w*)|(_+\\w*)) *");
@@ -37,8 +37,8 @@ public class RegexRepository {
 
 
     boolean checkSingleBlock() {
-        Matcher nameMatcher = nameRegex.matcher(generalStructureMatcher.group(2));
-        Matcher nameMatcherWithValue = nameRegexWithValue.matcher(generalStructureMatcher.group(2));
+        Matcher nameMatcher = nameRegex.matcher(generalStructureMatcher.group(3));
+        Matcher nameMatcherWithValue = nameRegexWithValue.matcher(generalStructureMatcher.group(3));
         if (!inputString.contains("=")) { // if has no =
             if (nameMatcher.matches()){
                 // TODO NOAM - call constructor without =
@@ -82,7 +82,7 @@ public class RegexRepository {
 
     public static void main(String[] args) {
         //String s1 = "int a1 = 7, a2, a3 = 6;";
-        String s2 = "int                         1_1_=1;";
+        String s2 = "        final       int                         1a1_1_1;";
         //String s3 = "sdfs= =sdffd";
         // System.out.println(s3.split("=").length);
         RegexRepository r2 = new RegexRepository(s2);
@@ -94,7 +94,10 @@ public class RegexRepository {
 //            System.out.println(r2.generalStructureMatcher.group(i));
 //            i++;
 //        }
+        System.out.println(r2.checkGeneralValidity());
+        System.out.println(r2.generalStructureMatcher.group(1));
         System.out.println(r2.generalStructureMatcher.group(2));
+        System.out.println(r2.generalStructureMatcher.group(3));
         System.out.println(r2.checkSingleBlock());
     }
 
