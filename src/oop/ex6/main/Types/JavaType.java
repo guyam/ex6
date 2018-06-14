@@ -54,6 +54,10 @@ public class JavaType {
         data = null;
     }
 
+    public String getType() {
+        return type;
+    }
+
     /**
      * constructor with a value that is not another variable. This constructor is to be used in one of the following
      * 1. a value was declared with the "final" keyword. in this case it MUST be initialized (the function checks for it).
@@ -68,6 +72,7 @@ public class JavaType {
         //first, we'll check if the value was declared with "final" and not initialized
         if (initialValue == null && initWithFinal) {
             throw new EmptyFinalDeclarationException();
+
         }
         scope = whatScope;
         type = typeName;

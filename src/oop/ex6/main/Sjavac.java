@@ -18,7 +18,7 @@ public class Sjavac {
 
 
     public Set<Integer> visitedLineSet;
-    public ArrayList<TreeMap<String, JavaType>> variableDict;
+    public ArrayList<LinkedHashMap<String, JavaType>> variableDict;
     public TreeMap<String, FunctionType> methodDict;
     public static int FIRST_SCOPE = 0;
     public static int SECOND_SCOPE = 1;
@@ -28,7 +28,7 @@ public class Sjavac {
         this.visitedLineSet = new HashSet<>();
         this.variableDict = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
-            variableDict.add(new TreeMap<>());
+            variableDict.add(new LinkedHashMap<>());
         }
         this.methodDict = new TreeMap<>();
     }
@@ -46,7 +46,7 @@ public class Sjavac {
             StringBuffer stringBuffer = new StringBuffer();
             String line;
             int lineCounter = 0;
-            //todo - change the signature of regex to accept the new treemaps!!
+            //todo - change the signature of regex to accept the new LINKEDHASHMAP!!
             RegexRepository variableHandler = new RegexRepository("", this.variableDict.get(FIRST_SCOPE), methodDict, scope);
             while ((line = bufferedReader.readLine()) != null) {
                 lineCounter++;
@@ -93,7 +93,7 @@ public class Sjavac {
         Sjavac validator = new Sjavac();
         validator.firstRunner(pathName, 0);
         System.out.println(validator.variableDict.get(0).size()); // should be 1
-        for (TreeMap<String, JavaType> tree : validator.variableDict) {
+        for (LinkedHashMap<String, JavaType> tree : validator.variableDict) {
             for (String treeKey : tree.keySet()) {
                 System.out.println(tree.get(treeKey));
                 System.out.println("also, its name is : " + treeKey);

@@ -8,6 +8,7 @@ import oop.ex6.main.Tuple;
 import oop.ex6.main.Types.*;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Stack;
 import java.util.TreeMap;
 
@@ -15,7 +16,7 @@ public class RegexRepository2 {
 
     private String inputString;
     public Stack<Integer> parathensisCounter;
-    public ArrayList<TreeMap<String, JavaType>> variableSet;
+    public ArrayList<LinkedHashMap<String, JavaType>> variableSet;
     public TreeMap<String, FunctionType> functionSet;
     public int scope;
 
@@ -23,7 +24,7 @@ public class RegexRepository2 {
     final String functionTitleRegex = "[ \\t\\r]*void[ \\t\\r]+([a-zA-Z]+\\w?)[ \\t\\r]*\\((.*)\\)[ \\t\\r]*\\{";
     final String functionCallRegex = "[ \\t\\r]*([a-zA-Z]+\\w?)[ \\t\\r]*\\(.*[ \\t\\r]*;$";
 
-    public RegexRepository2(String input, ArrayList<TreeMap<String, JavaType>> varSetInput,
+    public RegexRepository2(String input, ArrayList<LinkedHashMap<String,JavaType>> varSetInput,
                             TreeMap<String, FunctionType> funcSetInput, int scopeInput, Stack<Integer> pCounter) {
         this.inputString = input;
         //TODO - guy, the correct regex matcher
@@ -96,7 +97,7 @@ public class RegexRepository2 {
         scope++;
         //add the function parameters to the Set of javaTypes, we just opened up a new scope, so we don't need to worry
         // about clashes
-        variableSet.add(new TreeMap<>());
+        variableSet.add(new LinkedHashMap<>());
         for(int i=0;i<functionParams.size();i++){
             variableSet.get(variableSet.size()-1).put(paramNames.get(i),functionParams.get(i));
         }
