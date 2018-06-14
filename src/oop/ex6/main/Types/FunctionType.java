@@ -14,6 +14,10 @@ public class FunctionType {
     }
 
 
+    public LinkedHashMap<String, JavaType> getParameters() {
+        return parameters;
+    }
+
     public boolean sameSignature(LinkedHashMap<String, JavaType> other) {
         //first, let's check that if the are both just no param functions, we'll automatically return true
         if (other.size() == 0 && parameters.size() == 0)
@@ -25,6 +29,7 @@ public class FunctionType {
         //function receives is the same.
         Iterator<JavaType> first = parameters.values().iterator();
         Iterator<JavaType> second = other.values().iterator();
+
         while (first.hasNext()) {
             if (!JavaType.contains(JavaType.compatibleTypes.get(first.next().getType()), second.next().getType()))
                 return false;

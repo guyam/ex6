@@ -91,16 +91,14 @@ public class RegexRepository2 {
         return scope;
     }
 
-    private void functionDecType(ArrayList<JavaType> functionParams, ArrayList<String>paramNames){
+    private void functionDecType(String functionName){
         //increase the stack that counts the parenthasis and the scope we are going into
         parathensisCounter.push(0);
         scope++;
         //add the function parameters to the Set of javaTypes, we just opened up a new scope, so we don't need to worry
         // about clashes
         variableSet.add(new LinkedHashMap<>());
-        for(int i=0;i<functionParams.size();i++){
-            variableSet.get(variableSet.size()-1).put(paramNames.get(i),functionParams.get(i));
-        }
+        variableSet.get(variableSet.size()-1).putAll(functionSet.get(functionName).getParameters());
     }
 
 
