@@ -19,16 +19,22 @@ public class Sjavac {
 
     public Set<Integer> visitedLineSet;
     public ArrayList<TreeMap<String, JavaType>> variableDict;
-    public TreeMap<FunctionType, String> methodDict;
+    public TreeMap<String, FunctionType> methodDict;
+    public static int FIRST_SCOPE = 0;
+    public static int SECOND_SCOPE = 1;
 
 
     Sjavac() {
         this.visitedLineSet = new HashSet<>();
         this.variableDict = new ArrayList<>();
-        variableDict.add(new TreeMap<>());
+        for (int i = 0; i < 2; i++) {
+            variableDict.add(new TreeMap<>());
+        }
         this.methodDict = new TreeMap<>();
     }
 
+    //todo - second runner: skip lines we already visited, and after each iteration, update the scope to match the
+    //todo Repository's scope (using getscope)
 
     private void firstRunner(String filePath, int scope) throws IOException, EmptyFinalDeclarationException {
 
@@ -41,18 +47,19 @@ public class Sjavac {
             String line;
             int lineCounter = 0;
             //todo - change the signature of regex to accept the new treemaps!!
-            RegexRepository variableHandler = new RegexRepository("", this.variableDict.get(0), scope);
+            RegexRepository variableHandler = new RegexRepository("", this.variableDict.get(FIRST_SCOPE), methodDict, scope);
             while ((line = bufferedReader.readLine()) != null) {
                 lineCounter++;
                 Pattern commentLinePattern = Pattern.compile("//");
                 //System.out.println(lineCounter); //TODO DEL
                 Matcher commentLine = commentLinePattern.matcher((line));
-                if (line.matches("\\s*") || commentLine.lookingAt()) {
+                if (line.matches("[\\t\\r]*") || commentLine.lookingAt()) {
                     //System.out.println("STRING");  //TODO DEL
                     this.visitedLineSet.add(lineCounter);
                     continue;
                 } else {
                     variableHandler.setString(line);
+
                     variableHandler.checkSyntaxValidity();
                     /*
                     psuedocode
