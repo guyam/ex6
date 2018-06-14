@@ -58,6 +58,13 @@ public class Sjavac {
                 else{
                     variableHandler.setString(line);
                     variableHandler.checkSyntaxValidity();
+                    //Todo - complete the variable handler so that it can handle function declarations as well
+                    /*
+                    psuedocode
+                    if(!variableHandler.checkSyntaxValidity()) // should change name to syntax of javatypes
+                        variableHandler.checkFuncDecSyntax()
+                    f
+                     */
                 }
 
 
