@@ -4,8 +4,12 @@ package oop.ex6.main;
 //import java.io.File;
 //import java.io.FileReader;
 
+import jdk.nashorn.internal.runtime.regexp.joni.exception.SyntaxException;
+import oop.ex6.main.Exceptions.AssignmentInFunctionDeclarationException;
 import oop.ex6.main.Exceptions.EmptyFinalDeclarationException;
-import oop.ex6.main.Regex.RegexRepository;
+import oop.ex6.main.Exceptions.MoreThanOneEqualsException;
+import oop.ex6.main.Exceptions.VariableAlreadyExistsException;
+import oop.ex6.main.Regex.RegexRepositorytrial;
 import oop.ex6.main.Types.FunctionType;
 import oop.ex6.main.Types.JavaType;
 
@@ -20,6 +24,7 @@ public class Sjavac {
     public Set<Integer> visitedLineSet;
     public ArrayList<LinkedHashMap<String, JavaType>> variableDict;
     public TreeMap<String, FunctionType> methodDict;
+    public Stack<Integer> parenthesisCounter;
     public static int FIRST_SCOPE = 0;
     public static int SECOND_SCOPE = 1;
 
@@ -31,12 +36,14 @@ public class Sjavac {
             variableDict.add(new LinkedHashMap<>());
         }
         this.methodDict = new TreeMap<>();
+        parenthesisCounter = new Stack<>();
     }
 
     //todo - second runner: skip lines we already visited, and after each iteration, update the scope to match the
     //todo Repository's scope (using getscope)
 
-    private void firstRunner(String filePath, int scope) throws IOException, EmptyFinalDeclarationException {
+    private void firstRunner(String filePath, int scope) throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
+            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException {
 
         File file = new File(filePath);
         FileReader fileReader = null;
@@ -47,7 +54,8 @@ public class Sjavac {
             String line;
             int lineCounter = 0;
             //todo - change the signature of regex to accept the new LINKEDHASHMAP!!
-            RegexRepository variableHandler = new RegexRepository("", this.variableDict.get(FIRST_SCOPE), methodDict, scope);
+            RegexRepositorytrial variableHandler = new RegexRepositorytrial("", this.variableDict.get(FIRST_SCOPE), methodDict,
+                    parenthesisCounter, true, scope);
             while ((line = bufferedReader.readLine()) != null) {
                 lineCounter++;
                 Pattern commentLinePattern = Pattern.compile("//");
@@ -56,17 +64,20 @@ public class Sjavac {
                 if (line.matches("[\\t\\r]*") || commentLine.lookingAt()) {
                     //System.out.println("STRING");  //TODO DEL
                     this.visitedLineSet.add(lineCounter);
-                    continue;
                 } else {
+                    variableHandler.setMethod(true);
                     variableHandler.setString(line);
+                    if(variableHandler.checkMethodSyntax())
+                        continue;
+                    variableHandler.setMethod(false);
+                    if(!variableHandler.checkSyntaxValidity())
+                        throw new SyntaxException("bad syntax in line"+line);
 
-                    variableHandler.checkSyntaxValidity();
-                    /*
-                    psuedocode
-                    if(!variableHandler.checkSyntaxValidity()) // should change name to syntax of javatypes
-                        variableHandler.checkFuncDecSyntax()
-                    f
-                     */
+                    //psuedocode
+                    //if(!variableHandler.checkSyntaxValidity()) // should change name to syntax of javatypes
+                    //variableHandler.checkFuncDecSyntax()
+                    //f
+
                 }
 
 
@@ -74,33 +85,29 @@ public class Sjavac {
             }
             //if Pattern.
             //System.out.println(line);
-        } catch (IOException e) { //TODO CHANGE
+        } catch (Exception e) { //TODO CHANGE
             e.printStackTrace();
-            return;
-
-            //test guy
-
-
         }
 
         //System.out.println(this.visitedLineSet);
 
     }
 
-    public static void main(String[] args) throws IOException, EmptyFinalDeclarationException {
+    public static void main(String[] args) throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
+            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException {
         // TODO  - CHEK PARAMETERS???
         String pathName = args[0];
         Sjavac validator = new Sjavac();
         validator.firstRunner(pathName, 0);
-        System.out.println(validator.variableDict.get(0).size()); // should be 1
         for (LinkedHashMap<String, JavaType> tree : validator.variableDict) {
             for (String treeKey : tree.keySet()) {
                 System.out.println(tree.get(treeKey));
                 System.out.println("also, its name is : " + treeKey);
             }
         }
-
-
+        for (FunctionType function : validator.methodDict.values()) {
+            System.out.println(function);
+        }
     }
 
 

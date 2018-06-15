@@ -18,6 +18,18 @@ public class FunctionType {
         return parameters;
     }
 
+    @Override
+    public String toString() {
+        String str = "";
+        for (String key : parameters.keySet()) {
+            str += parameters.get(key).toString();
+            str += "\n";
+            str += "also, its name is: " + key;
+            str += "\n";
+        }
+        return str;
+    }
+
     public boolean sameSignature(LinkedHashMap<String, JavaType> other) {
         //first, let's check that if the are both just no param functions, we'll automatically return true
         if (other.size() == 0 && parameters.size() == 0)

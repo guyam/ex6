@@ -1,2 +1,7 @@
-
+int a;
+final char c = 'r';
+void noam(int k, final int b){
+void freddy(char t,String r, final boolean z){
+boolean k1=5;
+//}
 

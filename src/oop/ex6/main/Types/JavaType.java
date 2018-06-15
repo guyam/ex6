@@ -36,7 +36,7 @@ public class JavaType {
         temp.put("double", new String[]{"int", "double"});
         temp.put("char", new String[]{"char"});
         temp.put("boolean", new String[]{"int", "double", "boolean"});
-        temp.put("String", new String[]{"int", "double", "char", "boolean", "String"});
+        temp.put("String", new String[]{"String"});
         return temp;
     }
 
@@ -60,7 +60,8 @@ public class JavaType {
 
     /**
      * constructor with a value that is not another variable. This constructor is to be used in one of the following
-     * 1. a value was declared with the "final" keyword. in this case it MUST be initialized (the function checks for it).
+     * 1. a value was declared with the "final" keyword, in the global scope (i.e. not in a funciton)
+     * in this case it MUST be initialized (the function checks for it).
      * 2. a value was declared and initialized (int a=5);
      *
      * @param whatScope     the scope from which it came
@@ -101,6 +102,22 @@ public class JavaType {
         isFinal = initWithFinal;
         //tries to assign the initial value from the other parameter to the variable. might throw classcast exception
         assign(other.getData());
+    }
+
+    /**
+     * a constructor to be used when making a javatype object from a function parameter line. This case is special,
+     * as we can allow final uninitialized variables.
+     *
+     * @param whatScope     the scope from which it came
+     * @param typeName      the type of variable
+     * @param initWithFinal true if the variable was declared with the "final" prefix, false otherwise.
+     */
+    public JavaType(String typeName, boolean initWithFinal, int whatScope) throws EmptyFinalDeclarationException, ClassCastException {
+        scope = whatScope;
+        type = typeName;
+        isFinal = initWithFinal;
+        data=null;
+        wasInitialized=false;
     }
 
     /**
