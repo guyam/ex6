@@ -1,7 +1,8 @@
 int a;
-final char c = 'r';
+final char c='5';
 void noam(int k, final int b){
-void freddy(char t,String r, final boolean z){
+void freddy(char t,String r=6, final boolean z){
+void mom(final boolean e2, final int x){
 boolean k1=5;
 //}
 

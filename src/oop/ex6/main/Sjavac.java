@@ -42,7 +42,7 @@ public class Sjavac {
     //todo - second runner: skip lines we already visited, and after each iteration, update the scope to match the
     //todo Repository's scope (using getscope)
 
-    private void firstRunner(String filePath, int scope) throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
+    private boolean firstRunner(String filePath, int scope) throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
             MoreThanOneEqualsException, AssignmentInFunctionDeclarationException {
 
         File file = new File(filePath);
@@ -67,11 +67,11 @@ public class Sjavac {
                 } else {
                     variableHandler.setMethod(true);
                     variableHandler.setString(line);
-                    if(variableHandler.checkMethodSyntax())
+                    if (variableHandler.checkMethodSyntax())
                         continue;
                     variableHandler.setMethod(false);
-                    if(!variableHandler.checkSyntaxValidity())
-                        throw new SyntaxException("bad syntax in line"+line);
+                    if (!variableHandler.checkSyntaxValidity())
+                        throw new SyntaxException("bad syntax in line" + line);
 
                     //psuedocode
                     //if(!variableHandler.checkSyntaxValidity()) // should change name to syntax of javatypes
@@ -87,10 +87,10 @@ public class Sjavac {
             //System.out.println(line);
         } catch (Exception e) { //TODO CHANGE
             e.printStackTrace();
+            return false;
         }
-
+        return true;
         //System.out.println(this.visitedLineSet);
-
     }
 
     public static void main(String[] args) throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
@@ -98,15 +98,18 @@ public class Sjavac {
         // TODO  - CHEK PARAMETERS???
         String pathName = args[0];
         Sjavac validator = new Sjavac();
-        validator.firstRunner(pathName, 0);
-        for (LinkedHashMap<String, JavaType> tree : validator.variableDict) {
-            for (String treeKey : tree.keySet()) {
-                System.out.println(tree.get(treeKey));
-                System.out.println("also, its name is : " + treeKey);
+        if (validator.firstRunner(pathName, 0)) {
+            for (LinkedHashMap<String, JavaType> tree : validator.variableDict) {
+                for (String treeKey : tree.keySet()) {
+                    System.out.println(tree.get(treeKey));
+                    System.out.println("also, its name is : " + treeKey);
+                }
             }
-        }
-        for (FunctionType function : validator.methodDict.values()) {
-            System.out.println(function);
+            for (FunctionType function : validator.methodDict.values()) {
+                System.out.println(function);
+            }
+        } else {
+            System.out.println("no good");
         }
     }
 
