@@ -92,7 +92,9 @@ public class Sjavac {
         //System.out.println(this.visitedLineSet);
     }
 
-    private boolean golbalScopeHandler(String line, RegexRepositorytrial variableHandler) throws EmptyFinalDeclarationException, VariableAlreadyExistsException, MoreThanOneEqualsException, AssignmentInFunctionDeclarationException {
+    private boolean golbalScopeHandler(String line, RegexRepositorytrial variableHandler) throws EmptyAssignmentException,
+            EmptyFinalDeclarationException, VariableAlreadyExistsException, MoreThanOneEqualsException,
+            AssignmentInFunctionDeclarationException {
         variableHandler.setMethod(true);
         variableHandler.setString(line);
         if (variableHandler.checkMethodSyntax()) {

@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="549df576-f207-4114-be9b-1f6f857cde41" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepositorytrial.java" beforeDir="false" afterPath="$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepositorytrial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oop/ex6/main/Sjavac.java" beforeDir="false" afterPath="$PROJECT_DIR$/oop/ex6/main/Sjavac.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oop/ex6/main/good.txt" beforeDir="false" afterPath="$PROJECT_DIR$/oop/ex6/main/good.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +19,8 @@
       <file leaf-file-name="Sjavac.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/oop/ex6/main/Sjavac.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="82" column="48" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
+            <state relative-caret-position="309">
+              <caret line="106" column="5" lean-forward="true" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -29,10 +31,12 @@
       <file leaf-file-name="RegexRepository2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepository2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="28" column="33" lean-forward="true" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+            <state relative-caret-position="510">
+              <caret line="30" column="33" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5004#5005#0" expanded="true" />
+                <element signature="e#5060#5061#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -41,8 +45,8 @@
       <file leaf-file-name="good.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/ex6/main/good.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state>
+              <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -59,8 +63,8 @@
       <file leaf-file-name="RegexRepositorytrial.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepositorytrial.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4165">
-              <caret line="264" column="81" lean-forward="true" selection-start-line="264" selection-start-column="81" selection-end-line="264" selection-end-column="81" />
+            <state relative-caret-position="429">
+              <caret line="356" column="105" selection-start-line="356" selection-start-column="105" selection-end-line="356" selection-end-column="105" />
               <folding>
                 <element signature="e#4010#4011#0" expanded="true" />
                 <element signature="e#4091#4092#0" expanded="true" />
@@ -73,11 +77,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NoReturnValueException.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oop/ex6/main/Exceptions/NoReturnValueException.java">
+      <file leaf-file-name="EmptyFinalDeclarationException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/oop/ex6/main/Exceptions/EmptyFinalDeclarationException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EmptyAssignmentException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/oop/ex6/main/Exceptions/EmptyAssignmentException.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+              <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -93,15 +106,6 @@
                 <element signature="e#473#474#0" expanded="true" />
                 <element signature="e#506#507#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FunctionTypeTester.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oop/ex6/main/Types/FunctionTypeTester.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -156,6 +160,7 @@
       <find>RegexRepository</find>
       <find>print</find>
       <find>scope</find>
+      <find>guy</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -178,10 +183,11 @@
         <option value="$PROJECT_DIR$/oop/ex6/main/Types/FunctionTypeTester.java" />
         <option value="$PROJECT_DIR$/oop/ex6/main/Types/FunctionType.java" />
         <option value="$PROJECT_DIR$/oop/ex6/main/Exceptions/NoReturnValueException.java" />
-        <option value="$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepositorytrial.java" />
         <option value="$PROJECT_DIR$/oop/ex6/main/testetNoam.java" />
-        <option value="$PROJECT_DIR$/oop/ex6/main/good.txt" />
         <option value="$PROJECT_DIR$/oop/ex6/main/Types/JavaType.java" />
+        <option value="$PROJECT_DIR$/oop/ex6/main/good.txt" />
+        <option value="$PROJECT_DIR$/oop/ex6/main/Exceptions/EmptyAssignmentException.java" />
+        <option value="$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepositorytrial.java" />
         <option value="$PROJECT_DIR$/oop/ex6/main/Sjavac.java" />
       </list>
     </option>
@@ -256,6 +262,116 @@
       <recent name="C:\Users\noamf\Documents\University\spring 1st year\oop 67125\ex6\src\oop\ex6\main" />
       <recent name="C:\Users\noamf\Documents\University\spring 1st year\oop 67125\ex6\src" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepository2.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -470,7 +586,14 @@
       <option name="project" value="LOCAL" />
       <updated>1529258193196</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="first runner baby!!!!">
+      <created>1529258463010</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1529258463010</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -481,13 +604,13 @@
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Messages" order="0" sideWeight="0.4989339" weight="0.32897604" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5013423" side_tool="true" weight="0.52136755" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" weight="0.32905984" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49840087" visible="true" weight="0.25071225" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49932885" weight="0.32905984" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49798658" visible="true" weight="0.25071225" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Designer" order="6" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25637585" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25637585" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -509,21 +632,21 @@
       <window_info anchor="bottom" id="Find" order="2" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49932885" weight="0.32905984" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25637585" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25637585" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49840087" weight="0.25071225" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49798658" weight="0.25071225" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="6" />
       <window_info id="UI Designer" order="2" />
-      <window_info active="true" anchor="bottom" id="Debug" order="4" sideWeight="0.4986577" visible="true" weight="0.37037036" />
+      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.4986577" weight="0.37037036" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5013423" side_tool="true" weight="0.52136755" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" weight="0.32905984" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info id="Capture Tool" order="4" />
@@ -554,7 +677,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/oop/ex6/main/Sjavac.java</url>
-          <line>111</line>
+          <line>113</line>
           <properties class="oop.ex6.main.Sjavac" method="main">
             <option name="EMULATED" value="true" />
           </properties>
@@ -751,13 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oop/ex6/main/Exceptions/EmptyFinalDeclarationException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oop/ex6/main/Exceptions/FinalAssignmentException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -825,13 +941,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oop/ex6/main/good.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oop/ex6/main/Types/JavaType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -851,18 +960,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepository2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="28" column="33" lean-forward="true" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+        <state relative-caret-position="510">
+          <caret line="30" column="33" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5004#5005#0" expanded="true" />
+            <element signature="e#5060#5061#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oop/ex6/main/Exceptions/EmptyFinalDeclarationException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oop/ex6/main/good.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oop/ex6/main/Exceptions/EmptyAssignmentException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepositorytrial.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4165">
-          <caret line="264" column="81" lean-forward="true" selection-start-line="264" selection-start-column="81" selection-end-line="264" selection-end-column="81" />
+        <state relative-caret-position="429">
+          <caret line="356" column="105" selection-start-line="356" selection-start-column="105" selection-end-line="356" selection-end-column="105" />
           <folding>
             <element signature="e#4010#4011#0" expanded="true" />
             <element signature="e#4091#4092#0" expanded="true" />
@@ -876,8 +1008,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/oop/ex6/main/Sjavac.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="82" column="48" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
+        <state relative-caret-position="309">
+          <caret line="106" column="5" lean-forward="true" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

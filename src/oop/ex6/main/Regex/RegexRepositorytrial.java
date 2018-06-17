@@ -1,10 +1,7 @@
 package oop.ex6.main.Regex;
 
 import jdk.nashorn.internal.runtime.regexp.joni.exception.SyntaxException;
-import oop.ex6.main.Exceptions.AssignmentInFunctionDeclarationException;
-import oop.ex6.main.Exceptions.EmptyFinalDeclarationException;
-import oop.ex6.main.Exceptions.MoreThanOneEqualsException;
-import oop.ex6.main.Exceptions.VariableAlreadyExistsException;
+import oop.ex6.main.Exceptions.*;
 import oop.ex6.main.Types.FunctionType;
 import oop.ex6.main.Types.JavaType;
 import sun.awt.image.ImageWatched;
@@ -99,7 +96,7 @@ public class RegexRepositorytrial {
 
 
     public boolean checkMethodSyntax() throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
-            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException {
+            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException,EmptyAssignmentException {
         if (!checkGeneralMethodName()) { // if method name not good
             return false;
         } // if made it here - general signature structure good
@@ -170,7 +167,7 @@ public class RegexRepositorytrial {
     }
 
     boolean checkSingleBlock(String lineName) throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
-            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException, SyntaxException {
+            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException, SyntaxException, EmptyAssignmentException {
         Matcher nameMatcher = nameRegex.matcher(lineName);
         Matcher nameMatcherWithValue = nameRegexWithValue.matcher(lineName);
 
@@ -245,7 +242,12 @@ public class RegexRepositorytrial {
             //we reached here. that means we have one "=" sign, and we are in a global declaration of a javatype.
             boolean isFinal = generalStructureMatcher.group(1) != null;
             String var = varAndVal[0].trim();
-            String val = varAndVal[1].trim();
+            String val;
+            try {
+                val = varAndVal[1].trim();
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new EmptyAssignmentException();
+            }
             String typeName = generalStructureMatcher.group(2);
             if (nameMatcherWithValue.matches()) {
                 if ((variableSet.containsKey(var)) && (variableSet.get(var).getScope() == scope)) {
@@ -295,7 +297,7 @@ public class RegexRepositorytrial {
     }
 
     boolean checkMultiBlocks() throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
-            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException { //TODO  - WILL CONTINUE NOAM
+            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException,EmptyAssignmentException { //TODO  - WILL CONTINUE NOAM
         //Matcher nameMatcher = nameRegex.matcher(generalStructureMatcher.group(3));
         String lineWithComma = generalStructureMatcher.group(3);
         String[] dividedStringArray = lineWithComma.split(","); // TODO MAKE SURE ASSUMPTION COMMA IS CORRECT
@@ -328,7 +330,7 @@ public class RegexRepositorytrial {
 
 
     public boolean checkSyntaxValidity() throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
-            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException {
+            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException,EmptyAssignmentException {
 //        try{
         if (!checkGeneralValidity()) {
             return false;
@@ -352,7 +354,7 @@ public class RegexRepositorytrial {
 
     //
     public static void main(String[] args) throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
-            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException {
+            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException,EmptyAssignmentException {
         TreeMap<String, FunctionType> methodMap1 = new TreeMap<>();
         LinkedHashMap<String, JavaType> varSet1 = new LinkedHashMap<>();
         Stack<Integer> testStack = new Stack<>();
