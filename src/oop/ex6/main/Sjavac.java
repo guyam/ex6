@@ -6,6 +6,7 @@ package oop.ex6.main;
 
 import jdk.nashorn.internal.runtime.regexp.joni.exception.SyntaxException;
 import oop.ex6.main.Exceptions.*;
+import oop.ex6.main.Regex.RegexRepository2;
 import oop.ex6.main.Regex.RegexRepositorytrial;
 import oop.ex6.main.Types.FunctionType;
 import oop.ex6.main.Types.JavaType;
@@ -92,7 +93,44 @@ public class Sjavac {
         //System.out.println(this.visitedLineSet);
     }
 
-    private boolean golbalScopeHandler(String line, RegexRepositorytrial variableHandler) throws EmptyAssignmentException,
+
+
+    private boolean secondRunner(String filePath) throws IOException {
+        File file = new File(filePath);
+        FileReader fileReader = null;
+        String prevLine = "";
+        int localScope = 0;
+        try {
+            fileReader = new FileReader(filePath);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            StringBuffer stringBuffer = new StringBuffer();
+            String line;
+            RegexRepositorytrial funcInitializer = new RegexRepositorytrial("", variableDict.get(0), methodDict, parenthesisCounter, false, 0 );
+            RegexRepository2 conditionChecker = new RegexRepository2("",variableDict,methodDict,localScope);
+            while ((line = bufferedReader.readLine()) != null) {
+                funcInitializer.setString(line);
+                funcInitializer.setParenthasisCounterStack(parenthesisCounter);
+                conditionChecker.update(line, localScope, variableDict);
+                if (funcInitializer.checkGeneralMethodName()){
+                    String methodName = funcInitializer.getMehodName();
+                    LinkedHashMap<String, JavaType> methodParams = methodDict.get(methodName).getParameters();
+                    localScope++;
+                    parenthesisCounter.add(0);
+                    variableDict.add(new LinkedHashMap<String, JavaType>());
+                    for (String param: methodParams.keySet()){
+                        variableDict.get(localScope).put(param, methodDict.get(methodName).getParameters().get(param));
+                    }
+                }
+
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return true; // todo change
+    }
+
+        private boolean golbalScopeHandler(String line, RegexRepositorytrial variableHandler) throws EmptyAssignmentException,
             EmptyFinalDeclarationException, VariableAlreadyExistsException, MoreThanOneEqualsException,
             AssignmentInFunctionDeclarationException {
         variableHandler.setMethod(true);

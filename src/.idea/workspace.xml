@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="549df576-f207-4114-be9b-1f6f857cde41" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepository2.java" beforeDir="false" afterPath="$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepository2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepositorytrial.java" beforeDir="false" afterPath="$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepositorytrial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oop/ex6/main/Sjavac.java" beforeDir="false" afterPath="$PROJECT_DIR$/oop/ex6/main/Sjavac.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oop/ex6/main/good.txt" beforeDir="false" afterPath="$PROJECT_DIR$/oop/ex6/main/good.txt" afterDir="false" />
@@ -16,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Sjavac.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Sjavac.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/ex6/main/Sjavac.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="106" column="5" lean-forward="true" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+            <state relative-caret-position="567">
+              <caret line="129" column="35" lean-forward="true" selection-start-line="129" selection-start-column="35" selection-end-line="129" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -31,8 +32,8 @@
       <file leaf-file-name="RegexRepository2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepository2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="33" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+            <state relative-caret-position="357">
+              <caret line="30" column="155" selection-start-line="30" selection-start-column="155" selection-end-line="30" selection-end-column="155" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5004#5005#0" expanded="true" />
@@ -42,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="good.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="good.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/oop/ex6/main/good.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
+            <state relative-caret-position="336">
+              <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -54,7 +55,7 @@
       <file leaf-file-name="JavaTypeTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/ex6/main/Types/JavaTypeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="-7">
               <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
             </state>
           </provider>
@@ -63,15 +64,21 @@
       <file leaf-file-name="RegexRepositorytrial.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepositorytrial.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="356" column="105" selection-start-line="356" selection-start-column="105" selection-end-line="356" selection-end-column="105" />
+            <state relative-caret-position="300">
+              <caret line="78" column="34" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
               <folding>
                 <element signature="e#4010#4011#0" expanded="true" />
                 <element signature="e#4091#4092#0" expanded="true" />
                 <element signature="e#4130#4131#0" expanded="true" />
                 <element signature="e#4209#4210#0" expanded="true" />
-                <element signature="e#7278#7279#0" expanded="true" />
-                <element signature="e#7311#7312#0" expanded="true" />
+                <element signature="e#7377#7378#0" expanded="true" />
+                <element signature="e#7408#7409#0" expanded="true" />
+                <element signature="e#7453#7454#0" expanded="true" />
+                <element signature="e#7486#7487#0" expanded="true" />
+                <element signature="e#7515#7516#0" expanded="true" />
+                <element signature="e#7543#7544#0" expanded="true" />
+                <element signature="e#7582#7583#0" expanded="true" />
+                <element signature="e#7616#7617#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,7 +87,7 @@
       <file leaf-file-name="EmptyFinalDeclarationException.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/ex6/main/Exceptions/EmptyFinalDeclarationException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
+            <state relative-caret-position="-7">
               <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
@@ -89,7 +96,7 @@
       <file leaf-file-name="EmptyAssignmentException.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/ex6/main/Exceptions/EmptyAssignmentException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
+            <state relative-caret-position="-7">
               <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
             </state>
           </provider>
@@ -98,7 +105,7 @@
       <file leaf-file-name="FunctionType.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/ex6/main/Types/FunctionType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="273">
               <caret line="13" selection-start-line="13" selection-end-line="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -113,7 +120,7 @@
       <file leaf-file-name="JavaType.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/ex6/main/Types/JavaType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="-16">
               <caret line="160" column="49" selection-start-line="160" selection-start-column="49" selection-end-line="160" selection-end-column="49" />
               <folding>
                 <element signature="e#8614#8615#0" expanded="true" />
@@ -132,8 +139,8 @@
       <file leaf-file-name="testetNoam.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oop/ex6/main/testetNoam.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="-7">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -161,6 +168,10 @@
       <find>print</find>
       <find>scope</find>
       <find>guy</find>
+      <find>NOT IN</find>
+      <find>metho</find>
+      <find>Gener</find>
+      <find>upda</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -175,7 +186,6 @@
         <option value="$PROJECT_DIR$/oop/ex6/main/Exceptions/VariableAlreadyExistsException.java" />
         <option value="$PROJECT_DIR$/oop/ex6/main/Tuple.java" />
         <option value="$PROJECT_DIR$/oop/ex6/main/Exceptions/VariableNotDeclaredException.java" />
-        <option value="$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepository2.java" />
         <option value="$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepository.java" />
         <option value="$PROJECT_DIR$/oop/ex6/main/Exceptions/FinalAssignmentException.java" />
         <option value="$PROJECT_DIR$/oop/ex6/main/Exceptions/MoreThanOneEqualsException.java" />
@@ -185,18 +195,19 @@
         <option value="$PROJECT_DIR$/oop/ex6/main/Exceptions/NoReturnValueException.java" />
         <option value="$PROJECT_DIR$/oop/ex6/main/testetNoam.java" />
         <option value="$PROJECT_DIR$/oop/ex6/main/Types/JavaType.java" />
-        <option value="$PROJECT_DIR$/oop/ex6/main/good.txt" />
         <option value="$PROJECT_DIR$/oop/ex6/main/Exceptions/EmptyAssignmentException.java" />
+        <option value="$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepository2.java" />
         <option value="$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepositorytrial.java" />
         <option value="$PROJECT_DIR$/oop/ex6/main/Sjavac.java" />
+        <option value="$PROJECT_DIR$/oop/ex6/main/good.txt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="35" />
-    <option name="y" value="120" />
-    <option name="width" value="1030" />
-    <option name="height" value="525" />
+    <option name="x" value="28" />
+    <option name="y" value="96" />
+    <option name="width" value="824" />
+    <option name="height" value="420" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -251,7 +262,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -389,6 +400,17 @@
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
+    <configuration name="RegexRepository2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="oop.ex6.main.Regex.RegexRepository2" />
+      <module name="src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="oop.ex6.main.Regex.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
     <configuration name="RegexRepositorytrial" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="oop.ex6.main.Regex.RegexRepositorytrial" />
       <module name="src" />
@@ -482,10 +504,12 @@
       <item itemvalue="Application.Sjavac" />
       <item itemvalue="Application.testetNoam" />
       <item itemvalue="Application.RegexRepositorytrial" />
+      <item itemvalue="Application.RegexRepository2" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Sjavac" />
+        <item itemvalue="Application.RegexRepository2" />
         <item itemvalue="Application.RegexRepositorytrial" />
         <item itemvalue="Application.testetNoam" />
       </list>
@@ -593,11 +617,18 @@
       <option name="project" value="LOCAL" />
       <updated>1529258463010</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="first runner baby!!!!">
+      <created>1529260135737</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1529260135737</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -607,10 +638,10 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" weight="0.32905984" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49932885" weight="0.32905984" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49798658" visible="true" weight="0.25071225" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49798658" visible="true" weight="0.46187365" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Designer" order="6" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25637585" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20362474" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -668,22 +699,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/oop/ex6/main/Sjavac.java</url>
-          <line>54</line>
-          <properties />
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/oop/ex6/main/Sjavac.java</url>
-          <line>113</line>
-          <properties class="oop.ex6.main.Sjavac" method="main">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="20" />
     </breakpoint-manager>
     <watches-manager>
@@ -719,8 +734,14 @@
             <element signature="e#4091#4092#0" expanded="true" />
             <element signature="e#4130#4131#0" expanded="true" />
             <element signature="e#4209#4210#0" expanded="true" />
-            <element signature="e#7278#7279#0" expanded="true" />
-            <element signature="e#7311#7312#0" expanded="true" />
+            <element signature="e#7377#7378#0" expanded="true" />
+            <element signature="e#7408#7409#0" expanded="true" />
+            <element signature="e#7453#7454#0" expanded="true" />
+            <element signature="e#7486#7487#0" expanded="true" />
+            <element signature="e#7515#7516#0" expanded="true" />
+            <element signature="e#7543#7544#0" expanded="true" />
+            <element signature="e#7582#7583#0" expanded="true" />
+            <element signature="e#7616#7617#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -914,36 +935,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oop/ex6/main/Types/FunctionType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#357#358#0" expanded="true" />
-            <element signature="e#473#474#0" expanded="true" />
-            <element signature="e#506#507#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oop/ex6/main/Types/JavaTypeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="-7">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/oop/ex6/main/testetNoam.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="-7">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/oop/ex6/main/Types/JavaType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="-16">
           <caret line="160" column="49" selection-start-line="160" selection-start-column="49" selection-end-line="160" selection-end-column="49" />
           <folding>
             <element signature="e#8614#8615#0" expanded="true" />
@@ -958,10 +966,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/oop/ex6/main/Exceptions/EmptyFinalDeclarationException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oop/ex6/main/Exceptions/EmptyAssignmentException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oop/ex6/main/Types/FunctionType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#357#358#0" expanded="true" />
+            <element signature="e#473#474#0" expanded="true" />
+            <element signature="e#506#507#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepository2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="33" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+        <state relative-caret-position="357">
+          <caret line="30" column="155" selection-start-line="30" selection-start-column="155" selection-end-line="30" selection-end-column="155" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5004#5005#0" expanded="true" />
@@ -970,49 +1005,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oop/ex6/main/Exceptions/EmptyFinalDeclarationException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oop/ex6/main/good.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oop/ex6/main/Exceptions/EmptyAssignmentException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oop/ex6/main/Regex/RegexRepositorytrial.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="356" column="105" selection-start-line="356" selection-start-column="105" selection-end-line="356" selection-end-column="105" />
+        <state relative-caret-position="300">
+          <caret line="78" column="34" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
           <folding>
             <element signature="e#4010#4011#0" expanded="true" />
             <element signature="e#4091#4092#0" expanded="true" />
             <element signature="e#4130#4131#0" expanded="true" />
             <element signature="e#4209#4210#0" expanded="true" />
-            <element signature="e#7278#7279#0" expanded="true" />
-            <element signature="e#7311#7312#0" expanded="true" />
+            <element signature="e#7377#7378#0" expanded="true" />
+            <element signature="e#7408#7409#0" expanded="true" />
+            <element signature="e#7453#7454#0" expanded="true" />
+            <element signature="e#7486#7487#0" expanded="true" />
+            <element signature="e#7515#7516#0" expanded="true" />
+            <element signature="e#7543#7544#0" expanded="true" />
+            <element signature="e#7582#7583#0" expanded="true" />
+            <element signature="e#7616#7617#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/oop/ex6/main/Sjavac.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="106" column="5" lean-forward="true" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+        <state relative-caret-position="567">
+          <caret line="129" column="35" lean-forward="true" selection-start-line="129" selection-start-column="35" selection-end-line="129" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oop/ex6/main/good.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
         </state>
       </provider>
     </entry>

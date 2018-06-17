@@ -76,8 +76,11 @@ public class RegexRepositorytrial {
 
     }
 
+    public void setParenthasisCounterStack(Stack<Integer> newParenthesisCounter){
+        this.parenthasisCounterStack = newParenthesisCounter;
+    }
 
-    boolean checkGeneralMethodName() {
+    public boolean checkGeneralMethodName() {
         return methodGeneralNameMatcher.matches(); // true if name matches
     }
 
@@ -93,6 +96,15 @@ public class RegexRepositorytrial {
 
 // todo - add getter setter
     // todo - add dowith comas
+
+
+    public String getMehodName(){
+        if (!checkGeneralMethodName()){
+            return "BAD"; //TODO CHANGE !!!!!!!!!!
+        }
+        String methodName = methodGeneralNameMatcher.group(2);
+        return methodName;
+    }
 
 
     public boolean checkMethodSyntax() throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
