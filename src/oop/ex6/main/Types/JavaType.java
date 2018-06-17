@@ -202,7 +202,7 @@ public class JavaType {
         return null;
     }
 
-    private boolean isInt(String val) {
+    public static boolean isInt(String val) {
         try {
             Integer.parseInt(val);
             return true;
@@ -211,7 +211,7 @@ public class JavaType {
         }
     }
 
-    private boolean isDouble(String val) {
+    public static boolean isDouble(String val) {
         try {
             Double.parseDouble(val);
             return true;

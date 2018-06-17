@@ -5,10 +5,7 @@ package oop.ex6.main;
 //import java.io.FileReader;
 
 import jdk.nashorn.internal.runtime.regexp.joni.exception.SyntaxException;
-import oop.ex6.main.Exceptions.AssignmentInFunctionDeclarationException;
-import oop.ex6.main.Exceptions.EmptyFinalDeclarationException;
-import oop.ex6.main.Exceptions.MoreThanOneEqualsException;
-import oop.ex6.main.Exceptions.VariableAlreadyExistsException;
+import oop.ex6.main.Exceptions.*;
 import oop.ex6.main.Regex.RegexRepositorytrial;
 import oop.ex6.main.Types.FunctionType;
 import oop.ex6.main.Types.JavaType;
@@ -42,46 +39,47 @@ public class Sjavac {
     //todo - second runner: skip lines we already visited, and after each iteration, update the scope to match the
     //todo Repository's scope (using getscope)
 
-    private boolean firstRunner(String filePath, int scope) throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
-            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException {
+    private boolean firstRunner(String filePath, int scope) {
 
         File file = new File(filePath);
         FileReader fileReader = null;
+        String prevLine = "";
         try {
             fileReader = new FileReader(filePath);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             StringBuffer stringBuffer = new StringBuffer();
             String line;
             int lineCounter = 0;
-            //todo - change the signature of regex to accept the new LINKEDHASHMAP!!
             RegexRepositorytrial variableHandler = new RegexRepositorytrial("", this.variableDict.get(FIRST_SCOPE), methodDict,
                     parenthesisCounter, true, scope);
             while ((line = bufferedReader.readLine()) != null) {
+                //we have reached a not empty line
+                //let's check if it's a comment line.
                 lineCounter++;
                 Pattern commentLinePattern = Pattern.compile("//");
-                //System.out.println(lineCounter); //TODO DEL
                 Matcher commentLine = commentLinePattern.matcher((line));
+
                 if (line.matches("[\\t\\r]*") || commentLine.lookingAt()) {
-                    //System.out.println("STRING");  //TODO DEL
+                    //we have reached a cooment line! now we can unceremoniously skip
                     this.visitedLineSet.add(lineCounter);
-                } else {
-                    variableHandler.setMethod(true);
-                    variableHandler.setString(line);
-                    if (variableHandler.checkMethodSyntax())
-                        continue;
-                    variableHandler.setMethod(false);
-                    if (!variableHandler.checkSyntaxValidity())
-                        throw new SyntaxException("bad syntax in line" + line);
-
-                    //psuedocode
-                    //if(!variableHandler.checkSyntaxValidity()) // should change name to syntax of javatypes
-                    //variableHandler.checkFuncDecSyntax()
-                    //f
-
+                    continue;
                 }
 
-
-                // if (line.matches("\\s*")){
+                //it is not a comment line. let's check it out!
+                //first, we'll check if we are in the global scope
+                if (parenthesisCounter.isEmpty()) {
+                    //we are in the global scope! we'll now check and handle both legal cases in the global scope,
+                    //variable handling and declaration,
+                    if (!golbalScopeHandler(line, variableHandler))
+                        return false;
+                }
+                //if we have reached here, that means that we are NOT in the global scope. so we will just keep track of
+                //the number of brackets opened and closed
+                else {
+                    if (!innerScopeHandler(line,prevLine,variableHandler))
+                        throw new NoReturnValueException();
+                }
+                prevLine = line;
             }
             //if Pattern.
             //System.out.println(line);
@@ -89,8 +87,25 @@ public class Sjavac {
             e.printStackTrace();
             return false;
         }
-        return true;
+        return parenthesisCounter.isEmpty();
         //System.out.println(this.visitedLineSet);
+    }
+
+    private boolean golbalScopeHandler(String line, RegexRepositorytrial variableHandler) throws EmptyFinalDeclarationException, VariableAlreadyExistsException, MoreThanOneEqualsException, AssignmentInFunctionDeclarationException {
+        variableHandler.setMethod(true);
+        variableHandler.setString(line);
+        if (variableHandler.checkMethodSyntax()) {
+            return true;
+        }
+        variableHandler.setMethod(false);
+        if (!variableHandler.checkSyntaxValidity())
+            throw new SyntaxException("bad syntax in line" + line);
+        return true;
+    }
+
+    private boolean innerScopeHandler(String currentLine,String prevLine, RegexRepositorytrial variableHandler) {
+        variableHandler.setString(currentLine);
+        return variableHandler.innerScopeLine(prevLine);
     }
 
     public static void main(String[] args) throws EmptyFinalDeclarationException, VariableAlreadyExistsException,

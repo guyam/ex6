@@ -44,6 +44,9 @@ public class RegexRepositorytrial {
     public static final Pattern methodGeneralName = Pattern.compile("[ \\t\\r]*(void)[ \\t\\r]*" +
             "([A-Za-z]+[A-Za-z_0-9]*)[ \\t\\r]*(\\()[ \\t\\r]*((.)*)[ \\t\\r]*(\\))[ \\t\\r]*(\\{)[ " +
             "\\t\\r]*");
+    public static final Pattern endsWithClosedCurlyBrackets = Pattern.compile(".*}[ \\t\\r]*$");
+    public static final Pattern endsWithOpenCurlyBrackets = Pattern.compile(".*\\{[ \\t\\r]*$");
+    public static final Pattern returnLine = Pattern.compile("[ \\t\\r]*(return)[ \\t\\r]*;[ \\t\\r]*$");
 
     /**
      * class constructor - used to initiliaze the regexRepository
@@ -132,7 +135,7 @@ public class RegexRepositorytrial {
         for (String parSubString : comalessParams) {
             String param = parSubString + ";";
             methodParameterChecker.setString(param);
-            if(!methodParameterChecker.checkSyntaxValidity())
+            if (!methodParameterChecker.checkSyntaxValidity())
                 return false;
         }
         this.methodSet.put(methodName, new FunctionType(localVars));
@@ -257,6 +260,40 @@ public class RegexRepositorytrial {
     }
 
 
+    public boolean innerScopeLine(String previousLine) {
+
+        Matcher matcherClosed = endsWithClosedCurlyBrackets.matcher(inputString);
+        Matcher matcherOpen = endsWithOpenCurlyBrackets.matcher(inputString);
+        Matcher matchesReturnLine = returnLine.matcher(previousLine);
+
+        if (matcherOpen.matches()) {
+            increaseScope();
+            return true;
+        }
+        if (matcherClosed.matches()) {
+            switch (parenthasisCounterStack.size()) {
+                case 0:
+                    return false;
+                case 1: {
+                    if (matchesReturnLine.matches()) {
+                        decreaseScope();
+                        return true;
+                    }
+                    return false;
+                }
+                default:
+                    decreaseScope();
+                    return true;
+            }
+        }
+        return true;
+    }
+
+    private void decreaseScope() {
+        parenthasisCounterStack.pop();
+        scope--;
+    }
+
     boolean checkMultiBlocks() throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
             MoreThanOneEqualsException, AssignmentInFunctionDeclarationException { //TODO  - WILL CONTINUE NOAM
         //Matcher nameMatcher = nameRegex.matcher(generalStructureMatcher.group(3));
@@ -317,18 +354,18 @@ public class RegexRepositorytrial {
     public static void main(String[] args) throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
             MoreThanOneEqualsException, AssignmentInFunctionDeclarationException {
         TreeMap<String, FunctionType> methodMap1 = new TreeMap<>();
-        LinkedHashMap<String,JavaType>varSet1=new LinkedHashMap<>();
-        Stack<Integer> testStack=new Stack<>();
+        LinkedHashMap<String, JavaType> varSet1 = new LinkedHashMap<>();
+        Stack<Integer> testStack = new Stack<>();
         String s1 = "   void getNoam1  (final int a1, final char b, char c)      {";
         String[] array1 = s1.split(",");
         printAll(array1);
         //System.out.println(array1[1:array1.length]);
-        RegexRepositorytrial r2 = new RegexRepositorytrial(s1, varSet1, methodMap1, testStack, true,0);
+        RegexRepositorytrial r2 = new RegexRepositorytrial(s1, varSet1, methodMap1, testStack, true, 0);
         System.out.println(r2.checkMethodSyntax());
     }
 
     public static void printAll(String[] array) {
-        for(String obj:array)
+        for (String obj : array)
             System.out.println(obj);
     }
 //        String s2 = "  final    int        a=45    ;";
