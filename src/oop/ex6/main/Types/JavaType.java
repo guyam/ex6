@@ -145,7 +145,7 @@ public class JavaType {
      */
     public void update(JavaType other) throws ClassCastException, FinalAssignmentException {
         //first off, we'll check if we're trying to assign a value to a final variable
-        if (isFinal)
+        if (isFinal||!other.wasInitialized)
             throw new FinalAssignmentException();
         //next, we'll try to assign the value in the "assign" function, which throws its own errors
         assign(other.getData());
