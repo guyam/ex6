@@ -80,6 +80,7 @@ public class Sjavac {
                         throw new NoReturnValueException();
                 }
                 prevLine = line;
+                visitedLineSet.add(lineCounter);
             }
             //if Pattern.
             //System.out.println(line);
