@@ -163,8 +163,10 @@ public class JavaType {
             throw new ClassCastException();
         }
         data = val;
+        /*
         if (type.equals("boolean"))
             correctBoolData();
+        */
         wasInitialized = true;
     }
 
