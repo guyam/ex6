@@ -139,7 +139,6 @@ public class RegexRepositorytrial {
             increaseScope();
             return true; // TODO CHANGE??
         } // made it here- contains commas
-        System.out.println("YOLO"); // todo del
         LinkedHashMap<String, JavaType> localVars = new LinkedHashMap<>();
         increaseScope();
         RegexRepositorytrial methodParameterChecker = new RegexRepositorytrial(parameterList, localVars, null,
@@ -270,7 +269,7 @@ public class RegexRepositorytrial {
                     throw new VariableAlreadyExistsException();
                 }
                 variableSet.put(var, new JavaType(typeName, val, isFinal, scope));
-                System.out.println("plain old dec and init");
+                //System.out.println("plain old dec and init");
                 return true;
             }
             throw new SyntaxException("line syntax is incorrect");
@@ -321,8 +320,7 @@ public class RegexRepositorytrial {
         for (String subString : dividedStringArray) { //TODO DEL
             //System.out.println(subString);
             if (!subStringNameChecker(subString)) {
-                System.out.println("EXCEPTION!!");
-                // TODO EXCEPTION!!!!!
+                //System.out.println("EXCEPTION!!");
                 return false;
             } // made it here - all name ok
         }
@@ -379,7 +377,7 @@ public class RegexRepositorytrial {
         printAll(array1);
         //System.out.println(array1[1:array1.length]);
         RegexRepositorytrial r2 = new RegexRepositorytrial(s1, varSet1, methodMap1, testStack, true, 0);
-        System.out.println(r2.checkMethodSyntax());
+        //System.out.println(r2.checkMethodSyntax());
     }
 
     public static void printAll(String[] array) {

@@ -50,7 +50,7 @@ public class RegexRepository2 {
         Matcher singleReservedWordMatcher = booleanReservedWord.matcher(singleBlock);
         Matcher singleBoolValMatcher = booleanVar.matcher(singleBlock);
         if (singleReservedWordMatcher.matches()) {
-            System.out.println("TRUE FALSE WORD"); // TODO DEL
+            //System.out.println("TRUE FALSE WORD"); // TODO DEL
             return true;
         }
         if (!singleBoolValMatcher.matches()) {
@@ -66,7 +66,7 @@ public class RegexRepository2 {
             }
             return false;
         }
-        System.out.println(boolVar);
+        //System.out.println(boolVar);
         //System.out.println("NOT IN DICT");
         if (JavaType.isDouble(boolVar) || JavaType.isInt(boolVar)) {
            // System.out.println("THIS IS AN INT OR A DOUBLE");
@@ -157,7 +157,7 @@ public class RegexRepository2 {
         String methName = methodCallMatcher.group(1);
         calledMethodParams.add(methName);
         String params = methodCallMatcher.group(3);
-        System.out.println(params);
+        //System.out.println(params);
         if (!params.contains(",")) {
             String spacelessParam = params.trim();
             if (spacelessParam.matches("[ \\t\\r]*")) {

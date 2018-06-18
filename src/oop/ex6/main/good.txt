@@ -6,7 +6,7 @@ final int b =5;
 String c = "guy";
 if(true||false||ggg){
 String Noam = "Noam";
-almostDone('1',"4");
+almostDone("2","4");
 }
 return;
 }

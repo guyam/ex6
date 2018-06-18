@@ -40,7 +40,7 @@ public class Sjavac {
     //todo - second runner: skip lines we already visited, and after each iteration, update the scope to match the
     //todo Repository's scope (using getscope)
 
-    private boolean firstRunner(String filePath, int scope) {
+    private boolean firstRunner(String filePath, int scope) throws IOException {
 
         File file = new File(filePath);
         FileReader fileReader = null;
@@ -85,10 +85,15 @@ public class Sjavac {
             }
             //if Pattern.
             //System.out.println(line);
-        } catch (Exception e) { //TODO CHANGE
+        } catch (ValidatorException |FileNotFoundException e) { //TODO CHANGE
             e.printStackTrace();
             return false;
         }
+//        catch (FileNotFoundException e2) { //TODO CHANGE
+//            e2.printStackTrace();
+//            return false;
+//        }
+
         return parenthesisCounter.isEmpty();
         //System.out.println(this.visitedLineSet);
     }
@@ -122,7 +127,7 @@ public class Sjavac {
                     continue;
                 //next, init and declaration for of local parameters. //TODO TALK ABOUT RETURN LINE
                 if (funcInitializer.checkSyntaxValidity()) {
-                    System.out.println(localScope);
+                    //System.out.println(localScope);
                     continue;
                 } // now if/while
                 if (conditionChecker.checkBooleanSyntax()) {
@@ -133,7 +138,7 @@ public class Sjavac {
                 }
                 //checks "}" lines
                 if (line.matches("[ \\t\\r]*}[ \\t\\r]*")) {
-                    System.out.println("SCOPE DECREASED");// TODO DEL;
+                    //System.out.println("SCOPE DECREASED");// TODO DEL;
                     variableDict.remove(localScope);
                     localScope--;
                     parenthesisCounter.pop();
@@ -145,13 +150,15 @@ public class Sjavac {
                     if (!conditionChecker.getParamsandCheck(funcNameAndParams.get(0), funcNameAndParams.subList(1, funcNameAndParams.size()))) {
                         throw new SyntaxException("bad call to function in line" + lineCounter);
                     }
-                    System.out.println("good func"); //todo - delete
+                    //System.out.println("good func"); //todo - delete
                     continue;
                 }
                 throw new SyntaxException("bad call to function in line" + lineCounter);
             }
 
-        } catch (Exception e) {
+        }
+
+        catch (ValidatorException  e) {
             e.printStackTrace();
             return false;
         }
@@ -191,16 +198,20 @@ public class Sjavac {
         return variableHandler.innerScopeLine(prevLine);
     }
 
-    public static void main(String[] args) throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
-            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException, IOException {
+    public static void main(String[] args) {
         Sjavac runner = new Sjavac();
-        if(runner.firstRunner(args[0], 0) && runner.secondRunner(args[0])){
-            System.out.println(0);
-        }
-        else{
+        try {
+            if (runner.firstRunner(args[0], 0) && runner.secondRunner(args[0])) {
+                System.out.println(0);
+            } else {
+                System.out.println(1);
+            }
+        } catch (SyntaxException e){
             System.out.println(1);
         }
-        //todo - print 2 if IO error.
+        catch (IOException e){
+            System.err.println(2);
+        }
     }
         /*String pathName = args[0];
         Sjavac validator = new Sjavac();
