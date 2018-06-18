@@ -1,17 +1,11 @@
 int a1 = 7;
+boolean ggg= true;
 // comment
-
 void almostDone(int a1, String a2){
-
-return;
+final int b =5;
+String c = "guy";
+if(true||false||ggg){
+String Noam = "Noam";
 }
-
-void nightynight(final int a22, String bbb2){
-
-
-{
-
-}
-
 return;
 }

@@ -56,8 +56,9 @@ public class RegexRepository2 {
             return false;
         }
         String boolVar = singleBlock.trim();
-        if (variableSet.get(scope).containsKey(boolVar)){ // it is a variable
-            String boolVarType = variableSet.get(scope).get(boolVar).getType();
+        int scopeOfRelevantVar= wasBoolDeclared(boolVar);
+        if (scopeOfRelevantVar!= -1){ // it is a variable
+            String boolVarType = variableSet.get(scopeOfRelevantVar).get(boolVar).getType();
             if (JavaType.contains(JavaType.compatibleTypes.get("boolean"), boolVarType)){
                 System.out.println("BOOLEAN GLOBAL VARIABLE!"); // TODO DEL
                 return true;
@@ -76,9 +77,19 @@ public class RegexRepository2 {
     }
 
 
+    private int wasBoolDeclared(String varName){
+        for (int i = scope; i>=0; i--){
+            if (variableSet.get(i).containsKey(varName)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
     public boolean checkBooleanSyntax(){
         if (!generalValidityChecker()){ // check general syntax
-            System.out.println("BAD BOOLEAN EXCEPTION"); // TODO EXCEPTION
+            //System.out.println("BAD BOOLEAN EXCEPTION"); //
             return false;
         }
         String boolCondInput = this.generalConditionMatcher.group(3);

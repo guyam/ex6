@@ -60,7 +60,7 @@ public class Sjavac {
                 Pattern commentLinePattern = Pattern.compile("//");
                 Matcher commentLine = commentLinePattern.matcher((line));
 
-                if (line.matches("[\\t\\r]*") || commentLine.lookingAt()) {
+                if (line.matches("[ \\t\\r]*") || commentLine.lookingAt()) {
                     //we have reached a cooment line! now we can unceremoniously skip
                     this.visitedLineSet.add(lineCounter);
                     continue;
@@ -73,6 +73,7 @@ public class Sjavac {
                     //variable handling and declaration,
                     if (!golbalScopeHandler(line, variableHandler))
                         return false;
+                    visitedLineSet.add(lineCounter);
                 }
                 //if we have reached here, that means that we are NOT in the global scope. so we will just keep track of
                 //the number of brackets opened and closed
@@ -81,7 +82,6 @@ public class Sjavac {
                         throw new NoReturnValueException();
                 }
                 prevLine = line;
-                visitedLineSet.add(lineCounter);
             }
             //if Pattern.
             //System.out.println(line);
@@ -95,42 +95,71 @@ public class Sjavac {
 
 
 
-    private boolean secondRunner(String filePath) throws IOException {
+    private boolean secondRunner(String filePath) throws IOException{
         File file = new File(filePath);
         FileReader fileReader = null;
         String prevLine = "";
+        int lineCounter = 0;
         int localScope = 0;
         try {
             fileReader = new FileReader(filePath);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             StringBuffer stringBuffer = new StringBuffer();
             String line;
-            RegexRepositorytrial funcInitializer = new RegexRepositorytrial("", variableDict.get(0), methodDict, parenthesisCounter, false, 0 );
+            RegexRepositorytrial funcInitializer = new RegexRepositorytrial("", variableDict.get(localScope), methodDict, parenthesisCounter, false, 0 );
             RegexRepository2 conditionChecker = new RegexRepository2("",variableDict,methodDict,localScope);
             while ((line = bufferedReader.readLine()) != null) {
+                //first, we'll update that necessary parameters for the Regex Handlers
                 funcInitializer.setString(line);
                 funcInitializer.setParenthasisCounterStack(parenthesisCounter);
                 conditionChecker.update(line, localScope, variableDict);
-                if (funcInitializer.checkGeneralMethodName()){
-                    String methodName = funcInitializer.getMehodName();
-                    LinkedHashMap<String, JavaType> methodParams = methodDict.get(methodName).getParameters();
+                funcInitializer.setScope(localScope);
+                lineCounter++;
+                //now, we get to the fun stuff
+                //first, handle redeclaring the function parameters into the set containing the scope's parameters.
+                localScope = funcParamInitializer(localScope, funcInitializer);
+                //next, if we are at a line tht we visited, we can skip
+                if(visitedLineSet.contains(lineCounter))
+                    continue;
+                //next, init and declaration for of local parameters. //TODO TALK ABOUT RETURN LINE
+                if(funcInitializer.checkSyntaxValidity()){
+                    System.out.println(localScope);
+                    continue;
+                } // now if/while
+                if (conditionChecker.checkBooleanSyntax()){
                     localScope++;
-                    parenthesisCounter.add(0);
-                    variableDict.add(new LinkedHashMap<String, JavaType>());
-                    for (String param: methodParams.keySet()){
-                        variableDict.get(localScope).put(param, methodDict.get(methodName).getParameters().get(param));
-                    }
+                    parenthesisCounter.push(0);
+                    variableDict.add(new LinkedHashMap<>());
                 }
-
+                if (line.matches("[ \\t\\r]*}[ \\t\\r]*")){
+                    System.out.println("SCOPE DECREASED");// TODO DEL;
+                    variableDict.remove(localScope);
+                    localScope--;
+                    parenthesisCounter.pop();
+                }
             }
 
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return true; // todo change
     }
 
-        private boolean golbalScopeHandler(String line, RegexRepositorytrial variableHandler) throws EmptyAssignmentException,
+    private int funcParamInitializer(int localScope, RegexRepositorytrial funcInitializer) {
+        if (funcInitializer.checkGeneralMethodName()){
+            String methodName = funcInitializer.getMehodName();
+            LinkedHashMap<String, JavaType> methodParams = methodDict.get(methodName).getParameters();
+            localScope++;
+            parenthesisCounter.add(0);
+            variableDict.add(new LinkedHashMap<String, JavaType>());
+            for (String param: methodParams.keySet()){
+                variableDict.get(localScope).put(param, methodDict.get(methodName).getParameters().get(param));
+            }
+        }
+        return localScope;
+    }
+
+    private boolean golbalScopeHandler(String line, RegexRepositorytrial variableHandler) throws EmptyAssignmentException,
             EmptyFinalDeclarationException, VariableAlreadyExistsException, MoreThanOneEqualsException,
             AssignmentInFunctionDeclarationException {
         variableHandler.setMethod(true);
@@ -150,19 +179,29 @@ public class Sjavac {
     }
 
     public static void main(String[] args) throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
-            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException {
+            MoreThanOneEqualsException, AssignmentInFunctionDeclarationException, IOException {
         // TODO  - CHEK PARAMETERS???
         String pathName = args[0];
         Sjavac validator = new Sjavac();
         if (validator.firstRunner(pathName, 0)) {
             for (LinkedHashMap<String, JavaType> tree : validator.variableDict) {
                 for (String treeKey : tree.keySet()) {
-                    System.out.println(tree.get(treeKey));
+                        System.out.println(tree.get(treeKey));
                     System.out.println("also, its name is : " + treeKey);
                 }
             }
             for (FunctionType function : validator.methodDict.values()) {
                 System.out.println(function);
+            }
+        } else {
+            System.out.println("no good");
+        }
+        if (validator.secondRunner(pathName)) {
+            for (LinkedHashMap<String, JavaType> tree : validator.variableDict) {
+                for (String treeKey : tree.keySet()) {
+                    System.out.println(tree.get(treeKey));
+                    System.out.println("also, its name is : " + treeKey);
+                }
             }
         } else {
             System.out.println("no good");

@@ -76,6 +76,10 @@ public class RegexRepositorytrial {
 
     }
 
+
+
+
+
     public void setParenthasisCounterStack(Stack<Integer> newParenthesisCounter){
         this.parenthasisCounterStack = newParenthesisCounter;
     }
@@ -216,7 +220,7 @@ public class RegexRepositorytrial {
                         } else {
                             //we're good - meaning this is an ok javatype. we'll call the constructor that "ignores" final declaration,
                             // and add it to the variables list
-                            System.out.println("BUILD CONSTRUCTOR");
+
 
                             variableSet.put(trimmedName, new JavaType(generalStructureMatcher.group(2),
                                     generalStructureMatcher.group(1) != null, scope));
