@@ -188,7 +188,7 @@ public class JavaType {
      * @param val the string
      * @return which type of java the string represents
      */
-    private String returnType(String val) {
+    public static String returnType(String val) {
         if (val != null) {
             if (isInt(val))
                 return "int";
@@ -222,17 +222,17 @@ public class JavaType {
         }
     }
 
-    private boolean isBoolean(String val) {
+    public static boolean isBoolean(String val) {
         return (val.equals("true") || val.equals("false"));
     }
 
-    private boolean isChar(String val) {
+    public static boolean isChar(String val) {
         final String regexNotEmpty = "'.'";
         final String regexEmpty = "''";
         return val.matches(regexNotEmpty) || val.matches(regexEmpty);
     }
 
-    private boolean isString(String val) {
+    public static boolean isString(String val) {
         final String regex = "\".*\"";
         return val.matches(regex);
     }

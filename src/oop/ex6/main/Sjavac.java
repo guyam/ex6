@@ -78,7 +78,7 @@ public class Sjavac {
                 //if we have reached here, that means that we are NOT in the global scope. so we will just keep track of
                 //the number of brackets opened and closed
                 else {
-                    if (!innerScopeHandler(line,prevLine,variableHandler))
+                    if (!innerScopeHandler(line, prevLine, variableHandler))
                         throw new NoReturnValueException();
                 }
                 prevLine = line;
@@ -94,8 +94,7 @@ public class Sjavac {
     }
 
 
-
-    private boolean secondRunner(String filePath) throws IOException{
+    private boolean secondRunner(String filePath) throws IOException {
         File file = new File(filePath);
         FileReader fileReader = null;
         String prevLine = "";
@@ -106,8 +105,8 @@ public class Sjavac {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             StringBuffer stringBuffer = new StringBuffer();
             String line;
-            RegexRepositorytrial funcInitializer = new RegexRepositorytrial("", variableDict.get(localScope), methodDict, parenthesisCounter, false, 0 );
-            RegexRepository2 conditionChecker = new RegexRepository2("",variableDict,methodDict,localScope);
+            RegexRepositorytrial funcInitializer = new RegexRepositorytrial("", variableDict.get(localScope), methodDict, parenthesisCounter, false, 0);
+            RegexRepository2 conditionChecker = new RegexRepository2("", variableDict, methodDict, localScope);
             while ((line = bufferedReader.readLine()) != null) {
                 //first, we'll update that necessary parameters for the Regex Handlers
                 funcInitializer.setString(line);
@@ -119,40 +118,54 @@ public class Sjavac {
                 //first, handle redeclaring the function parameters into the set containing the scope's parameters.
                 localScope = funcParamInitializer(localScope, funcInitializer);
                 //next, if we are at a line tht we visited, we can skip
-                if(visitedLineSet.contains(lineCounter))
+                if (visitedLineSet.contains(lineCounter) || line.matches("[ \\t\\r]*return[ \\t\\r]*;[ \\t\\r]*"))
                     continue;
                 //next, init and declaration for of local parameters. //TODO TALK ABOUT RETURN LINE
-                if(funcInitializer.checkSyntaxValidity()){
+                if (funcInitializer.checkSyntaxValidity()) {
                     System.out.println(localScope);
                     continue;
                 } // now if/while
-                if (conditionChecker.checkBooleanSyntax()){
+                if (conditionChecker.checkBooleanSyntax()) {
                     localScope++;
                     parenthesisCounter.push(0);
                     variableDict.add(new LinkedHashMap<>());
+                    continue;
                 }
-                if (line.matches("[ \\t\\r]*}[ \\t\\r]*")){
+                //checks "}" lines
+                if (line.matches("[ \\t\\r]*}[ \\t\\r]*")) {
                     System.out.println("SCOPE DECREASED");// TODO DEL;
                     variableDict.remove(localScope);
                     localScope--;
                     parenthesisCounter.pop();
+                    continue;
                 }
+                //checks function calls
+                if (conditionChecker.checkMethodCallSyntax()) {
+                    ArrayList<String> funcNameAndParams = conditionChecker.getCalledMeth();
+                    if (!conditionChecker.getParamsandCheck(funcNameAndParams.get(0), funcNameAndParams.subList(1, funcNameAndParams.size()))) {
+                        throw new SyntaxException("bad call to function in line" + lineCounter);
+                    }
+                    System.out.println("good func"); //todo - delete
+                    continue;
+                }
+                throw new SyntaxException("bad call to function in line" + lineCounter);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
         return true; // todo change
     }
 
     private int funcParamInitializer(int localScope, RegexRepositorytrial funcInitializer) {
-        if (funcInitializer.checkGeneralMethodName()){
+        if (funcInitializer.checkGeneralMethodName()) {
             String methodName = funcInitializer.getMehodName();
             LinkedHashMap<String, JavaType> methodParams = methodDict.get(methodName).getParameters();
             localScope++;
             parenthesisCounter.add(0);
             variableDict.add(new LinkedHashMap<String, JavaType>());
-            for (String param: methodParams.keySet()){
+            for (String param : methodParams.keySet()) {
                 variableDict.get(localScope).put(param, methodDict.get(methodName).getParameters().get(param));
             }
         }
@@ -173,15 +186,23 @@ public class Sjavac {
         return true;
     }
 
-    private boolean innerScopeHandler(String currentLine,String prevLine, RegexRepositorytrial variableHandler) {
+    private boolean innerScopeHandler(String currentLine, String prevLine, RegexRepositorytrial variableHandler) {
         variableHandler.setString(currentLine);
         return variableHandler.innerScopeLine(prevLine);
     }
 
     public static void main(String[] args) throws EmptyFinalDeclarationException, VariableAlreadyExistsException,
             MoreThanOneEqualsException, AssignmentInFunctionDeclarationException, IOException {
-        // TODO  - CHEK PARAMETERS???
-        String pathName = args[0];
+        Sjavac runner = new Sjavac();
+        if(runner.firstRunner(args[0], 0) && runner.secondRunner(args[0])){
+            System.out.println(0);
+        }
+        else{
+            System.out.println(1);
+        }
+        //todo - print 2 if IO error.
+    }
+        /*String pathName = args[0];
         Sjavac validator = new Sjavac();
         if (validator.firstRunner(pathName, 0)) {
             for (LinkedHashMap<String, JavaType> tree : validator.variableDict) {
@@ -205,8 +226,7 @@ public class Sjavac {
             }
         } else {
             System.out.println("no good");
-        }
-    }
+        }*/
 
 
 }

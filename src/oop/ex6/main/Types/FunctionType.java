@@ -1,5 +1,6 @@
 package oop.ex6.main.Types;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 
@@ -30,7 +31,10 @@ public class FunctionType {
         return str;
     }
 
-    public boolean sameSignature(LinkedHashMap<String, JavaType> other) {
+    public boolean sameSignature(ArrayList<String> other) {
+        //first off, we'll check if the parameters were ok
+        if (other == null)
+            return false;
         //first, let's check that if the are both just no param functions, we'll automatically return true
         if (other.size() == 0 && parameters.size() == 0)
             return true;
@@ -40,10 +44,9 @@ public class FunctionType {
         //now we know that they are of the same size, we'll go over them both to see if the signature of the types the
         //function receives is the same.
         Iterator<JavaType> first = parameters.values().iterator();
-        Iterator<JavaType> second = other.values().iterator();
-
+        Iterator<String> second = other.iterator();
         while (first.hasNext()) {
-            if (!JavaType.contains(JavaType.compatibleTypes.get(first.next().getType()), second.next().getType()))
+            if (!JavaType.contains(JavaType.compatibleTypes.get(first.next().getType()), second.next()))
                 return false;
         }
         return true;

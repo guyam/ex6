@@ -1,11 +1,12 @@
 int a1 = 7;
 boolean ggg= true;
 // comment
-void almostDone(int a1, String a2){
+void almostDone(String a1, String a2){
 final int b =5;
 String c = "guy";
 if(true||false||ggg){
 String Noam = "Noam";
+almostDone('1',"4");
 }
 return;
 }
